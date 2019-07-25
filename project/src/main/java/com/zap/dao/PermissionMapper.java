@@ -17,5 +17,9 @@ public interface PermissionMapper {
 
     int updateByPermissionId(Permission permission);
 
+	Set<Permission> selectAll();
+	
+	Set<Permission> selectByRoleId(int roleId);
+	
 	Set<Permission> selectByRoleIds(int[] roleIds);
 }

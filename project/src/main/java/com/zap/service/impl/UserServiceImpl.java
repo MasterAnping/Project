@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.zap.dao.UserMapper;
 import com.zap.dao.UserRoleMapper;
 import com.zap.entity.User;
+import com.zap.entity.UserRoleKey;
 import com.zap.service.UserService;
 
 @Service
@@ -32,8 +33,9 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void addUser(User user) {
-		userMapper.insertSelective(user);
-		//userRoleMapper.insert(new UserRoleKey("00000002", user.getUserId()));
+		user.setIsLocked(false);
+		userMapper.insertSelective(user);		
+		userRoleMapper.insert(new UserRoleKey(user.getUserId(), 2));
 	}
 
 	

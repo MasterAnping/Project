@@ -1,20 +1,20 @@
 package com.zap.entity;
 
 public class User {
-    private Integer userid;
+    private Integer userId;
 
     private String password;
 
     private String username;
 
-    private Boolean islocked;
+    private Boolean isLocked;
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {
@@ -33,11 +33,11 @@ public class User {
         this.username = username;
     }
 
-    public Boolean getIslocked() {
-        return islocked;
+    public Boolean getIsLocked() {
+        return isLocked;
     }
 
-    public void setIslocked(Boolean islocked) {
-        this.islocked = islocked;
+    public void setIsLocked(Boolean isLocked) {
+        this.isLocked = isLocked;
     }
 }

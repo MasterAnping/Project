@@ -1,43 +1,43 @@
 package com.zap.entity;
 
 public class Permission {
-    private Integer permissionid;
+    private Integer permissionId;
 
-    private String permissionname;
+    private String permissionName;
 
-    private String permissiondesc;
+    private String permissionDesc;
 
-    private Integer parentpermissionid;
+    private Integer parentPermissionId;
 
-    public Integer getPermissionid() {
-        return permissionid;
+    public Integer getPermissionId() {
+        return permissionId;
     }
 
-    public void setPermissionid(Integer permissionid) {
-        this.permissionid = permissionid;
+    public void setPermissionId(Integer permissionId) {
+        this.permissionId = permissionId;
     }
 
-    public String getPermissionname() {
-        return permissionname;
+    public String getPermissionName() {
+        return permissionName;
     }
 
-    public void setPermissionname(String permissionname) {
-        this.permissionname = permissionname;
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
     }
 
-    public String getPermissiondesc() {
-        return permissiondesc;
+    public String getPermissionDesc() {
+        return permissionDesc;
     }
 
-    public void setPermissiondesc(String permissiondesc) {
-        this.permissiondesc = permissiondesc;
+    public void setPermissionDesc(String permissionDesc) {
+        this.permissionDesc = permissionDesc;
     }
 
-    public Integer getParentpermissionid() {
-        return parentpermissionid;
+    public Integer getParentPermissionId() {
+        return parentPermissionId;
     }
 
-    public void setParentpermissionid(Integer parentpermissionid) {
-        this.parentpermissionid = parentpermissionid;
+    public void setParentPermissionId(Integer parentPermissionId) {
+        this.parentPermissionId = parentPermissionId;
     }
 }

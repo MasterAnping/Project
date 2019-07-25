@@ -19,12 +19,11 @@
 		
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
-		<property name="loginUrl" value="/home"></property>
+		<property name="loginUrl" value="/login/"></property>
 		<property name="unauthorizedUrl" value="/home/noPerms"></property>
 		<property name="filters">
 			<util:map>
-				<entry key="anyPerms" value-ref="anyPermissionsAuthorizationFilter" />
-				<entry key="kickout" value-ref="kickoutSessionControlFilter" />
+				<!-- <entry key="anyPerms" value-ref="anyPermissionsAuthorizationFilter" /> -->
 			</util:map>
 		</property>
 		<property name="filterChainDefinitions">
@@ -34,9 +33,9 @@
 				/fonts/** = anon
 				/image/** = anon
 				
-				/home/** = anon 
+				/home = anon
 				/login/** = anon 
-				/user/register = anon
+				/user/registerCheck = anon
 				/cache/** =anon 
 				
 				/userManage/add* = perms["用户：新增"]
@@ -63,7 +62,6 @@
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="myRealm"></property>
 		<property name="sessionManager" ref="sessionManager"></property>
-		<property name="rememberMeManager" ref="rememberMeManager"></property>
 		<property name="cacheManager" ref="shiroEhCacheManager"></property>
 	</bean>
 

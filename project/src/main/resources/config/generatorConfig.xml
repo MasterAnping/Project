@@ -21,15 +21,14 @@
 			targetProject="project/src/main/java" >
 			<!-- 是否针对string类型的字段在set的时候进行trim调用 -->
 			<!-- <property name="trimStrings" value="true" /> -->
-			
 		</javaModelGenerator>
 			
-		<sqlMapGenerator targetPackage="mapper"
+		<!-- <sqlMapGenerator targetPackage="mapper"
 			targetProject="project/src/main/resources" />
 			
 		
 		<javaClientGenerator targetPackage="com.zap.dao"
-			targetProject="project/src/main/java" type="XMLMAPPER" />
+			targetProject="project/src/main/java" type="XMLMAPPER" /> -->
 			
 		
 			
@@ -38,34 +37,36 @@
 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
 			enableDeleteByPrimaryKey="true" enableSelectByExample="false"
 			enableDeleteByExample="false" enableCountByExample="false"
-			enableUpdateByExample="false" >
-					
+			enableUpdateByExample="false"  >
+			<property name="useActualColumnNames" value="true"/>
 		</table>
 		<table schema="project" tableName="role" enableInsert="true"
 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
 			enableDeleteByPrimaryKey="true" enableSelectByExample="false"
 			enableDeleteByExample="false" enableCountByExample="false"
-			enableUpdateByExample="false" >					
+			enableUpdateByExample="false" >		
+			<property name="useActualColumnNames" value="true"/>			
 		</table>
 		<table schema="project" tableName="permission" enableInsert="true"
 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
 			enableDeleteByPrimaryKey="true" enableSelectByExample="false"
 			enableDeleteByExample="false" enableCountByExample="false"
 			enableUpdateByExample="false" >
-					
+			<property name="useActualColumnNames" value="true"/>
 		</table>
 		<table schema="project" tableName="user_role" enableInsert="true"
 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
 			enableDeleteByPrimaryKey="true" enableSelectByExample="false"
 			enableDeleteByExample="false" enableCountByExample="false"
-			enableUpdateByExample="false" >					
+			enableUpdateByExample="false" >	
+			<property name="useActualColumnNames" value="true"/>				
 		</table>
 		<table schema="project" tableName="role_permission" enableInsert="true"
 			enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true"
 			enableDeleteByPrimaryKey="true" enableSelectByExample="false"
 			enableDeleteByExample="false" enableCountByExample="false"
 			enableUpdateByExample="false" >
-					
+					<property name="useActualColumnNames" value="true"/>
 		</table>
 		
 	

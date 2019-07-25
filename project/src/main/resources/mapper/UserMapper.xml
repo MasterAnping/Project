@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zap.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.zap.entity.User">
-    <id column="UserId" jdbcType="INTEGER" property="userid" />
+    <id column="UserId" jdbcType="INTEGER" property="userId" />
     <result column="Password" jdbcType="CHAR" property="password" />
     <result column="Username" jdbcType="VARCHAR" property="username" />
-    <result column="IsLocked" jdbcType="BIT" property="islocked" />
+    <result column="IsLocked" jdbcType="BIT" property="isLocked" />
   </resultMap>
   <sql id="Base_Column_List">
     UserId, Password, Username, IsLocked
@@ -14,28 +14,28 @@
     select 
     <include refid="Base_Column_List" />
     from user
-    where UserId = #{userid,jdbcType=INTEGER}
+    where UserId = #{userId}
   </select>
   <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where Username = #{Username,jdbcType=String}
+    where Username = #{Username}
   </select>
   <delete id="deleteByUserId" parameterType="java.lang.Integer">
     delete from user
-    where UserId = #{userid,jdbcType=INTEGER}
+    where UserId = #{userId}
   </delete>
   <insert id="insert" parameterType="com.zap.entity.User">
     insert into user (UserId, Password, Username, 
       IsLocked)
-    values (#{userid,jdbcType=INTEGER}, #{password,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, 
-      #{islocked,jdbcType=BIT})
+    values (#{userId}, #{password}, #{username}, 
+      #{isLocked)
   </insert>
-  <insert id="insertSelective" parameterType="com.zap.entity.User">
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="userId" parameterType="com.zap.entity.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
+      <if test="userId != null">
         UserId,
       </if>
       <if test="password != null">
@@ -44,22 +44,22 @@
       <if test="username != null">
         Username,
       </if>
-      <if test="islocked != null">
+      <if test="isLocked != null">
         IsLocked,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId},
       </if>
       <if test="password != null">
-        #{password,jdbcType=CHAR},
+        #{password},
       </if>
       <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+        #{username},
       </if>
-      <if test="islocked != null">
-        #{islocked,jdbcType=BIT},
+      <if test="isLocked != null">
+        #{isLocked},
       </if>
     </trim>
   </insert>
@@ -67,22 +67,22 @@
     update user
     <set>
       <if test="password != null">
-        Password = #{password,jdbcType=CHAR},
+        Password = #{password},
       </if>
       <if test="username != null">
-        Username = #{username,jdbcType=VARCHAR},
+        Username = #{username},
       </if>
-      <if test="islocked != null">
-        IsLocked = #{islocked,jdbcType=BIT},
+      <if test="isLocked != null">
+        IsLocked = #{isLocked},
       </if>
     </set>
-    where UserId = #{userid,jdbcType=INTEGER}
+    where UserId = #{userId}
   </update>
   <update id="updateByUserId" parameterType="com.zap.entity.User">
     update user
-    set Password = #{password,jdbcType=CHAR},
-      Username = #{username,jdbcType=VARCHAR},
-      IsLocked = #{islocked,jdbcType=BIT}
-    where UserId = #{userid,jdbcType=INTEGER}
+    set Password = #{password},
+      Username = #{username},
+      IsLocked = #{isLocked}
+    where UserId = #{userId}
   </update>
 </mapper>

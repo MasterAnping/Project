@@ -43,4 +43,9 @@ public class RoleServiceImpl implements RoleService {
 		return roleMapper.selectByUserId(userId);
 	}
 
+	@Override
+	public Set<Role> queryRolesByUsername(String username) {		
+		return roleMapper.selectByUsername(username);
+	}
+
 }

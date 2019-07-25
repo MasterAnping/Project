@@ -2,34 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zap.dao.UserRoleMapper">
   <resultMap id="BaseResultMap" type="com.zap.entity.UserRoleKey">
-    <id column="UserId" jdbcType="INTEGER" property="userid" />
-    <id column="RoleId" jdbcType="INTEGER" property="roleid" />
+    <id column="UserId" jdbcType="INTEGER" property="userId" />
+    <id column="RoleId" jdbcType="INTEGER" property="roleId" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="com.zap.entity.UserRoleKey">
     delete from user_role
-    where UserId = #{userid,jdbcType=INTEGER}
-      and RoleId = #{roleid,jdbcType=INTEGER}
+    where UserId = #{userId,jdbcType=INTEGER}
+      and RoleId = #{roleId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zap.entity.UserRoleKey">
     insert into user_role (UserId, RoleId)
-    values (#{userid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER})
+    values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.zap.entity.UserRoleKey">
     insert into user_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
+      <if test="userId != null">
         UserId,
       </if>
-      <if test="roleid != null">
+      <if test="roleId != null">
         RoleId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
-      <if test="roleid != null">
-        #{roleid,jdbcType=INTEGER},
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>

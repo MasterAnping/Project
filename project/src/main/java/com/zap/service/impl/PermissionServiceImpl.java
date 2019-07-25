@@ -24,7 +24,7 @@ public class PermissionServiceImpl implements PermissionService {
 	}
 
 	@Override
-	public Set<Permission> queryAllPermission() {
+	public Set<Permission> queryAllPermissions() {
 		return permissionMapper.selectAll();
 	}
 

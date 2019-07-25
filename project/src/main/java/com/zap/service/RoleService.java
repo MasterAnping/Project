@@ -11,5 +11,7 @@ public interface RoleService {
 	Set<Role> queryAllRole();
 
 	Set<Role> queryRoleByUserId(int userId);
+	
+	Set<Role> queryRolesByUsername(String username);
 
 }

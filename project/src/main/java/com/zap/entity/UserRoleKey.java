@@ -1,23 +1,32 @@
 package com.zap.entity;
 
 public class UserRoleKey {
-    private Integer userid;
+    private Integer userId;
 
-    private Integer roleid;
+    private Integer roleId;
+    
+    public UserRoleKey() {
 
-    public Integer getUserid() {
-        return userid;
+	}
+
+    public UserRoleKey(Integer userId, Integer roleId) {
+    	this.userId=userId;
+    	this.roleId=roleId;
+	}
+
+	public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Integer getRoleid() {
-        return roleid;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }

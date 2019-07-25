@@ -1,23 +1,23 @@
 package com.zap.entity;
 
 public class RolePermissionKey {
-    private Integer roleid;
+    private Integer roleId;
 
-    private Integer permissionid;
+    private Integer permissionId;
 
-    public Integer getRoleid() {
-        return roleid;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public Integer getPermissionid() {
-        return permissionid;
+    public Integer getPermissionId() {
+        return permissionId;
     }
 
-    public void setPermissionid(Integer permissionid) {
-        this.permissionid = permissionid;
+    public void setPermissionId(Integer permissionId) {
+        this.permissionId = permissionId;
     }
 }

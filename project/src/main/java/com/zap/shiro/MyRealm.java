@@ -51,11 +51,11 @@ public class MyRealm extends AuthorizingRealm {
 		log.debug(logonName);
 		if (logonName != null) {
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-			for (Role role : roleService.findRoleByLogonName(logonName)) {
+			for (Role role : roleService.queryRolesByUsername(logonName)) {
 				info.addRole(role.getRoleName());
-				for (Permission permission : permissionService.findModuleByRoleId(role
+				for (Permission permission : permissionService.queryPermissionsByRoleId(role
 						.getRoleId())) {
-					info.addStringPermission(permission.getModuleName());
+					info.addStringPermission(permission.getPermissionName());
 				}
 			}
 			return info;
@@ -69,7 +69,7 @@ public class MyRealm extends AuthorizingRealm {
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		String logonName = token.getUsername();
 		log.debug(logonName);
-		User user = userService.findUserBylogonName(logonName);
+		User user = userService.queryUserByUsername(logonName);
 		return new SimpleAuthenticationInfo(logonName, user.getPassword(),
 				getName());
 	}

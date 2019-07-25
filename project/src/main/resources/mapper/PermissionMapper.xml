@@ -2,81 +2,97 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zap.dao.PermissionMapper">
   <resultMap id="BaseResultMap" type="com.zap.entity.Permission">
-    <id column="PermissionId" jdbcType="INTEGER" property="permissionid" />
-    <result column="PermissionName" jdbcType="VARCHAR" property="permissionname" />
-    <result column="PermissionDesc" jdbcType="VARCHAR" property="permissiondesc" />
-    <result column="ParentPermissionId" jdbcType="INTEGER" property="parentpermissionid" />
+    <id column="PermissionId" jdbcType="INTEGER" property="permissionId" />
+    <result column="PermissionName" jdbcType="VARCHAR" property="permissionName" />
+    <result column="PermissionDesc" jdbcType="VARCHAR" property="permissionDesc" />
+    <result column="ParentPermissionId" jdbcType="INTEGER" property="parentPermissionId" />
   </resultMap>
   <sql id="Base_Column_List">
     PermissionId, PermissionName, PermissionDesc, ParentPermissionId
   </sql>
+  
+  <select id="selectAll"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from permission
+  </select>
+  
   <select id="selectByPermissionId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from permission
-    where PermissionId = #{permissionid,jdbcType=INTEGER}
+    where PermissionId = #{permissionId}
   </select>
+  
+  <select id="selectByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from permission p
+    inner join role_permission rp on p.permissionId=rp.permissionId
+    where roleId = #{roleId}
+  </select>
+  
   <delete id="deleteByPermissionId" parameterType="java.lang.Integer">
     delete from permission
-    where PermissionId = #{permissionid,jdbcType=INTEGER}
+    where PermissionId = #{permissionId}
   </delete>
   <insert id="insert" parameterType="com.zap.entity.Permission">
     insert into permission (PermissionId, PermissionName, PermissionDesc, 
       ParentPermissionId)
-    values (#{permissionid,jdbcType=INTEGER}, #{permissionname,jdbcType=VARCHAR}, #{permissiondesc,jdbcType=VARCHAR}, 
-      #{parentpermissionid,jdbcType=INTEGER})
+    values (#{permissionId,jdbcType=INTEGER}, #{permissionName,jdbcType=VARCHAR}, #{permissionDesc,jdbcType=VARCHAR}, 
+      #{parentpermissionId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.zap.entity.Permission">
     insert into permission
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="permissionid != null">
+      <if test="permissionId != null">
         PermissionId,
       </if>
-      <if test="permissionname != null">
+      <if test="permissionName != null">
         PermissionName,
       </if>
-      <if test="permissiondesc != null">
+      <if test="permissionDesc != null">
         PermissionDesc,
       </if>
-      <if test="parentpermissionid != null">
+      <if test="parentpermissionId != null">
         ParentPermissionId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="permissionid != null">
-        #{permissionid,jdbcType=INTEGER},
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=INTEGER},
       </if>
-      <if test="permissionname != null">
-        #{permissionname,jdbcType=VARCHAR},
+      <if test="permissionName != null">
+        #{permissionName,jdbcType=VARCHAR},
       </if>
-      <if test="permissiondesc != null">
-        #{permissiondesc,jdbcType=VARCHAR},
+      <if test="permissionDesc != null">
+        #{permissionDesc,jdbcType=VARCHAR},
       </if>
-      <if test="parentpermissionid != null">
-        #{parentpermissionid,jdbcType=INTEGER},
+      <if test="parentpermissionId != null">
+        #{parentpermissionId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPermissionIdSelective" parameterType="com.zap.entity.Permission">
     update permission
     <set>
-      <if test="permissionname != null">
-        PermissionName = #{permissionname,jdbcType=VARCHAR},
+      <if test="permissionName != null">
+        PermissionName = #{permissionName,jdbcType=VARCHAR},
       </if>
-      <if test="permissiondesc != null">
-        PermissionDesc = #{permissiondesc,jdbcType=VARCHAR},
+      <if test="permissionDesc != null">
+        PermissionDesc = #{permissionDesc,jdbcType=VARCHAR},
       </if>
-      <if test="parentpermissionid != null">
-        ParentPermissionId = #{parentpermissionid,jdbcType=INTEGER},
+      <if test="parentpermissionId != null">
+        ParentPermissionId = #{parentpermissionId,jdbcType=INTEGER},
       </if>
     </set>
-    where PermissionId = #{permissionid,jdbcType=INTEGER}
+    where PermissionId = #{permissionId,jdbcType=INTEGER}
   </update>
   <update id="updateByPermissionId" parameterType="com.zap.entity.Permission">
     update permission
-    set PermissionName = #{permissionname,jdbcType=VARCHAR},
-      PermissionDesc = #{permissiondesc,jdbcType=VARCHAR},
-      ParentPermissionId = #{parentpermissionid,jdbcType=INTEGER}
-    where PermissionId = #{permissionid,jdbcType=INTEGER}
+    set PermissionName = #{permissionName,jdbcType=VARCHAR},
+      PermissionDesc = #{permissionDesc,jdbcType=VARCHAR},
+      ParentPermissionId = #{parentpermissionId,jdbcType=INTEGER}
+    where PermissionId = #{permissionId,jdbcType=INTEGER}
   </update>
 </mapper>
